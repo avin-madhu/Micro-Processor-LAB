@@ -1,2 +1,4 @@
 # Micro-Processor-LAB
-MICRO PROCESSOR LAB KTU 2023
+
+1. [8 Bit Addition](8BitAdd.asm)
+2. [Palindrome Check](palindrome.asm)
