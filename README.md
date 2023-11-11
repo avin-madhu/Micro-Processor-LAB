@@ -1,4 +1,10 @@
-# Microprocessor Lab Programs {style="text-align: center;"}
+# <h1 align="center">Microprocessor Lab Programs<h1>
+
+## programs
+
+1. [16 Bit Addition](16BitAdd.asm)
+2. [Palindrome Check](palindrome.asm)
+3. [Check number of Vowels](vowelcheck.asm)
 
 ## General Data
 
@@ -15,12 +21,4 @@
 
 * L4CH => It refers to final exit. status of this will be stored in the AL  
 
-* AAA => ASCII Adjust After Addition 
-
-
-
-## programs
-
-1. [16 Bit Addition](16BitAdd.asm)
-2. [Palindrome Check](palindrome.asm)
-3. [Check number of Vowels](vowelcheck.asm)
+* AAA => ASCII Adjust After Addition
