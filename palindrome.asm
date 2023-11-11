@@ -1,61 +1,65 @@
-data segment
-        msg1 db 0ah,0dh,"Enter the string : $"
-        msg2 db 0ah,0dh,"Is a palindrome $"
-        msg3 db 0ah,0dh,"Is not a palindrome $"
-        n db 09h dup(?)
-data ends
-code segment
-        assume cs:code,ds:data
-        start: mov ax,data
-               mov ds,ax
+ASSUME DS: DATA, CS: CODE
 
-               ;Getting offset of array
-               mov si,offset n
-               mov di,offset n
+DATA SEGMENT 
+    MSG1 DB 10,13, "ENTER THE STRING: $"
+    MSG2 DB 10,13, "THE STRING IS A PALINDROME$"
+    MSG3 DB 10,13,"THE STRING IS NOT A PALINDROME$"
+    STR1 DB 50 DUP(0)
+DATA ENDS
 
-               ;Printing message1
-               lea dx,msg1
-               mov ah,09h
-               int 21h
+CODE SEGMENT 
+    START: MOV AX, DATA
+           MOV DS, AX
 
-               mov cl,00h
-               ;Reading string
-          scan:mov ah,01h
-               int 21h
+           LEA DX, MSG1
+           MOV AH, 09H
+           INT 21H
 
-               cmp al,0dh
-               jz ended
-               mov [si],al
-               inc cl
-               inc si
-               jmp scan
+           LEA SI, STR1
+           LEA DI, STR1 
 
-         ended:
-               dec si
-               mov bl,[si]
-               cmp [di],bl
-               jnz notpal
-               inc di
-               dec cl
-               jnz ended
+           MOV AH, 01H
+    NEXT:  
+           INT 21H
+           CMP AL, 0DH ; 0D IS FOR ENTER 
+           JE TERMINATE
+           MOV [DI], AL
+           INC DI
+           JMP NEXT
+
+    TERMINATE: 
+           MOV AL,'$'
+           MOV [DI], AL
+
+    DOTHIS:
+           DEC DI
+           MOV AL,[SI]
+           CMP [DI],AL
+           JNE NOTPALINDROME
+
+           INC SI
+           CMP SI,DI
+           JL DOTHIS
+
+    PALINDROME: 
+           MOV AH,09H
+           LEA DX, MSG2
+           INT 21H
+           JMP EXIT
+
+    NOTPALINDROME: 
+           LEA DX, MSG3
+           MOV AH, 09H
+           INT 21H
+           
+
+    EXIT:    
+           MOV AH,4CH
+           INT 21H
+
+CODE ENDS
+END START
 
 
-          pal:
-               ;Printing palindrom
-               lea dx,msg2
-               mov ah,09h
-               int 21h
-               jmp stoped
 
-       notpal: ;Printing not palindrom
-               lea dx,msg3
-               mov ah,09h
-               int 21h
-          
-         stoped:
-                mov ah,4ch
-                int 21h
-
-
-code ends
-end start
+           
