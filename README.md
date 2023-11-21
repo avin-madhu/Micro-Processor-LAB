@@ -5,6 +5,7 @@
 1. [16 Bit Addition](16BitAdd.asm)
 2. [Palindrome Check](palindrome.asm)
 3. [Check number of Vowels](vowelcheck.asm)
+4. [Linear Search](search.asm)
 
 ## General Data
 
