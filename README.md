@@ -6,6 +6,7 @@
 2. [Palindrome Check](palindrome.asm)
 3. [Check number of Vowels](vowelcheck.asm)
 4. [Linear Search](search.asm)
+5. [Bubble Sort](BubbleSort.asm)
 
 ## General Data
 
